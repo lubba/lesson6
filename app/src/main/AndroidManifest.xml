@@ -23,6 +23,7 @@
             android:authorities="com.csc.lpaina.lesson6"
             android:enabled="true"
             android:exported="true" />
+
     </application>
 
 </manifest>
