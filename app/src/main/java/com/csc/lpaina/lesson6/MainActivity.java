@@ -6,11 +6,14 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
@@ -34,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+        EditText editText = (EditText) findViewById(R.id.edit_text);
+        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.floating_action_button);
+        Button button = (Button) findViewById(R.id.button_add);
 
         Cursor cursor = managedQuery(ENTRIES_URI,
                 null, null, null, null);

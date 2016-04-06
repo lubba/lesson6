@@ -24,6 +24,7 @@
             android:enabled="true"
             android:exported="true" />
 
+        <activity android:name=".EditActivity"></activity>
     </application>
 
 </manifest>

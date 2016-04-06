@@ -38,15 +38,11 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
     public static class CardViewHolder extends RecyclerView.ViewHolder {
         final TextView textViewTitle;
         final TextView textViewDescription;
-        final TextView textViewChannel;
-        final TextView textViewLink;
 
         CardViewHolder(View itemView) {
             super(itemView);
-            textViewTitle = (TextView) itemView.findViewById(R.id.feed_title);
-            textViewDescription = (TextView) itemView.findViewById(R.id.feed_description);
-            textViewChannel = (TextView) itemView.findViewById(R.id.feed_channel);
-            textViewLink = (TextView) itemView.findViewById(R.id.feed_link);
+            textViewTitle = (TextView) itemView.findViewById(R.id.title);
+            textViewDescription = (TextView) itemView.findViewById(R.id.description);
         }
     }
 
