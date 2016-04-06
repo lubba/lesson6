@@ -1,4 +1,4 @@
-package com.csc.lesson6;
+package com.csc.lpaina.lesson6;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -10,8 +10,9 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
+
 public class ReaderContentProvider extends ContentProvider {
-    public static final String AUTHORITY = "com.csc.lesson6";
+    public static final String AUTHORITY = "com.csc.lpaina.lesson6";
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY);
 
     public static final int ENTRIES = 1;

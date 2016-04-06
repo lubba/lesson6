@@ -1,4 +1,4 @@
-package com.csc.lesson6;
+package com.csc.lpaina.lesson6;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

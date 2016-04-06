@@ -1,4 +1,4 @@
-package com.csc.lesson6;
+package com.csc.lpaina.lesson6;
 
 import android.content.ContentValues;
 import android.database.ContentObserver;
@@ -9,9 +9,6 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-
-import static com.csc.lesson6.FeedsTable.COLUMN_CONTENT;
-import static com.csc.lesson6.FeedsTable.COLUMN_TITLE;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
@@ -45,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void addData(View view) {
         ContentValues values = new ContentValues();
-        values.put(COLUMN_TITLE,
+        values.put(FeedsTable.COLUMN_TITLE,
                 "new title3");
         values.put(FeedsTable.COLUMN_CONTENT,
                 "<![CDATA[Компания Sony выпустит более мощную версию своей игровой консоли PlayStation 4 с обновленной видеокартой в октябре 2016 года. Будущая версия приставки, которая, предположительно, получит название PlayStation 4k, сможет запускать игры с 4k-графикой, чье разрешение в 4 раза превышает текущий стандарт 1080p.]]>");
