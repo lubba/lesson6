@@ -7,4 +7,5 @@
     <color name="task_0">#00FF00</color>
     <color name="task_1">#FFFF00</color>
     <color name="task_2">#FF0000</color>
+    <color name="text">#000000</color>
 </resources>

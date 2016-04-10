@@ -21,16 +21,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final String TAG = "MainActivity";
     public static final Uri ENTRIES_URI = Uri.withAppendedPath(ReaderContentProvider.CONTENT_URI, "entries");
     private final int ENTRIES_LOADER = 1;
+    final private RVAdapter adapter = new RVAdapter(null);
     private EditText editText;
-    private RVAdapter adapter;
+    private LinearLayoutManager layoutManager;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
         editText = (EditText) findViewById(R.id.edit_text);
@@ -39,8 +41,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Cursor cursor = getContentResolver().query(ENTRIES_URI, null, null, null, null);
         cursor.moveToNext();
-        adapter = new RVAdapter(cursor);
+        adapter.updateCursor(cursor);
         recyclerView.setAdapter(adapter);
+        layoutManager.onItemsChanged(recyclerView);
+        //recyclerView.swapAdapter();
     }
 
     public void addData(String title, String description) {
@@ -76,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (id) {
             case ENTRIES_LOADER:
                 adapter.updateCursor(data);
+                layoutManager.onItemsChanged(recyclerView);
                 break;
             default:
                 throw new IllegalArgumentException("UnknownLoader id = " + id);

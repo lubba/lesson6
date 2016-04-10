@@ -23,11 +23,12 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
 
     public RVAdapter(Cursor cursor) {
         this.cursor = cursor;
-        cursor.moveToFirst();
     }
 
     public void updateCursor(Cursor newCursor) {
-        cursor.close();
+        if (cursor != null) {
+            cursor.close();
+        }
         cursor = newCursor;
     }
 
