@@ -3,18 +3,23 @@ package com.csc.lpaina.lesson6;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
+import hugo.weaving.DebugLog;
+
+@DebugLog
 public class ReaderOpenHelper extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 2;
-    public static final String DATABASE_NAME = "reader.db";
+    public static final int DATABASE_VERSION = 3;
+    public static final String DATABASE_NAME = "todo.db";
 
-    private static final String SQL_CREATE_ENTRIES_TABLE =
+    public static final String SQL_CREATE_ENTRIES_TABLE =
             "CREATE TABLE " + FeedsTable.TABLE_NAME
                     + "("
                     + FeedsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + FeedsTable.COLUMN_TITLE + " TEXT, "
-                    + FeedsTable.COLUMN_CONTENT + " TEXT, "
-                    + FeedsTable.COLUMN_DATE + " TEXT"
+                    + FeedsTable.COLUMN_DESCRIPTION + " TEXT, "
+                    + FeedsTable.COLUMN_RANGE + " INTEGER, "
+                    + FeedsTable.COLUMN_STATUS + " TEXT"
                     + ")";
 
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + FeedsTable.TABLE_NAME;
@@ -24,7 +29,9 @@ public class ReaderOpenHelper extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db) {
+        Log.d("Helper", "onCreate: " + SQL_CREATE_ENTRIES_TABLE);
         db.execSQL(SQL_CREATE_ENTRIES_TABLE);
+
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

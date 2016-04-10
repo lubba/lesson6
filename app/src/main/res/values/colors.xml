@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="task_default">#FFFFFF</color>
+    <color name="task_0">#00FF00</color>
+    <color name="task_1">#FFFF00</color>
+    <color name="task_2">#FF0000</color>
 </resources>

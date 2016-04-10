@@ -1,10 +1,17 @@
 package com.csc.lpaina.lesson6;
 
+import android.content.ContentUris;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import hugo.weaving.DebugLog;
@@ -17,6 +24,11 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
     public RVAdapter(Cursor cursor) {
         this.cursor = cursor;
         cursor.moveToFirst();
+    }
+
+    public void updateCursor(Cursor newCursor) {
+        cursor.close();
+        cursor = newCursor;
     }
 
     @Override
@@ -32,17 +44,62 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
 
     @Override
     public void onBindViewHolder(CardViewHolder cardViewHolder, int i) {
+        if (cursor.moveToPosition(i)) {
+            cardViewHolder.textViewTitle.setText(cursor.getString(cursor.getColumnIndex(FeedsTable.COLUMN_TITLE)));
+            cardViewHolder.textViewDescription.setText(cursor.getString(cursor.getColumnIndex(FeedsTable.COLUMN_DESCRIPTION)));
+            cardViewHolder.checkBox.setChecked(Boolean.getBoolean(cursor.getString(cursor.getColumnIndex(FeedsTable.COLUMN_STATUS))));
+            int star = cursor.getInt(cursor.getColumnIndex(FeedsTable.COLUMN_RANGE));
+            int color;
+            switch (star) {
+                case 0:
+                    color = R.color.task_0;
+                    break;
+                case 1:
+                    color = R.color.task_1;
+                    break;
+                case 2:
+                    color = R.color.task_2;
+                    break;
+                default:
+                    color = R.color.task_default;
+                    break;
+            }
 
+            cardViewHolder.cardView.setCardBackgroundColor(color);
+            cardViewHolder.id = i;
+        }
     }
 
-    public static class CardViewHolder extends RecyclerView.ViewHolder {
+    public static class CardViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
         final TextView textViewTitle;
         final TextView textViewDescription;
+        final CheckBox checkBox;
+        final CardView cardView;
+        Context context;
+        int id;
 
         CardViewHolder(View itemView) {
             super(itemView);
             textViewTitle = (TextView) itemView.findViewById(R.id.title);
             textViewDescription = (TextView) itemView.findViewById(R.id.description);
+            checkBox = (CheckBox) itemView.findViewById(R.id.check_box);
+            cardView = (CardView) itemView.findViewById(R.id.card_view);
+            cardView.setOnClickListener(this);
+            checkBox.setOnCheckedChangeListener(this);
+            context = itemView.getContext();
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(context, EditActivity.class);
+            context.startActivity(intent);
+        }
+
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            ContentValues values = new ContentValues();
+            values.put(FeedsTable.COLUMN_STATUS, isChecked);
+            context.getContentResolver().update(ContentUris.withAppendedId(MainActivity.ENTRIES_URI, id), values, null, null);
         }
     }
 
