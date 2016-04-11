@@ -85,6 +85,9 @@ public class ReaderContentProvider extends ContentProvider {
             default:
                 throw new UnsupportedOperationException("Not yet implemented");
         }
+        if (sortOrder == null || sortOrder.isEmpty()) {
+            sortOrder = FeedsTable.COLUMN_STATUS + ", " + FeedsTable.COLUMN_RANGE + " ASC";
+        }
         SQLiteDatabase db = helper.getReadableDatabase();
         Cursor cursor = builder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
