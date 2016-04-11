@@ -72,7 +72,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
             }
 
             cardViewHolder.cardView.setCardBackgroundColor(color);
-            cardViewHolder.id = i;
+            cardViewHolder.id = cursor.getInt(cursor.getColumnIndex(FeedsTable._ID));
         }
     }
 

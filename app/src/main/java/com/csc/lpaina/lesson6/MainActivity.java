@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         addData(editText.getText().toString(), "");
         editText.setText("");
         editText.clearFocus();
+        layoutManager.onItemsChanged(recyclerView);
     }
 
     @Override
