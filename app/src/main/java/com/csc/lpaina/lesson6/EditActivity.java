@@ -34,7 +34,7 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
 
         textViewTitle.setText(intent.getStringExtra(RVAdapter.CardViewHolder.TITLE));
         textViewDescription.setText(intent.getStringExtra(RVAdapter.CardViewHolder.DESCRIPTION));
-        checkBox.setChecked(intent.getBooleanExtra(RVAdapter.CardViewHolder.CHECKED, true));
+        checkBox.setChecked(intent.getBooleanExtra(RVAdapter.CardViewHolder.CHECKED, false));
         ratingBar.setRating(intent.getIntExtra(RVAdapter.CardViewHolder.RANGE, 0));
 
         Button editFinished = (Button) findViewById(R.id.button_ok);
@@ -47,7 +47,11 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         values.put(FeedsTable.COLUMN_TITLE, textViewTitle.getText().toString());
         values.put(FeedsTable.COLUMN_DESCRIPTION, textViewDescription.getText().toString());
         values.put(FeedsTable.COLUMN_RANGE, (int) ratingBar.getRating());
-        values.put(FeedsTable.COLUMN_STATUS, checkBox.isChecked());
+        if (checkBox.isChecked()) {
+            values.put(FeedsTable.COLUMN_STATUS, 1);
+        } else {
+            values.put(FeedsTable.COLUMN_STATUS, -1);
+        }
 
         getContentResolver().update(ContentUris.withAppendedId(MainActivity.ENTRIES_URI, columnId), values,
                 FeedsTable._ID + "=?", new String[]{String.valueOf(columnId)});

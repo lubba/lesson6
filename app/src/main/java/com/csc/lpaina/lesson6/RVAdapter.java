@@ -48,7 +48,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
         if (cursor.moveToPosition(i)) {
             cardViewHolder.title = cursor.getString(cursor.getColumnIndex(FeedsTable.COLUMN_TITLE));
             cardViewHolder.description = cursor.getString(cursor.getColumnIndex(FeedsTable.COLUMN_DESCRIPTION));
-            cardViewHolder.checked = Boolean.getBoolean(cursor.getString(cursor.getColumnIndex(FeedsTable.COLUMN_STATUS)));
+            cardViewHolder.checked = cursor.getInt(cursor.getColumnIndex(FeedsTable.COLUMN_STATUS)) > 0;
             cardViewHolder.range = cursor.getInt(cursor.getColumnIndex(FeedsTable.COLUMN_RANGE));
 
             cardViewHolder.textViewTitle.setText(cardViewHolder.title);
@@ -113,8 +113,11 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
             intent.putExtra(COLUMN_ID, id);
             intent.putExtra(TITLE, title);
             intent.putExtra(DESCRIPTION, description);
-            intent.putExtra(RANGE, range);
-            intent.putExtra(CHECKED, checked);
+            if (checked) {
+                intent.putExtra(CHECKED, 1);
+            } else {
+                intent.putExtra(CHECKED, -1);
+            }
             context.startActivity(intent);
         }
 
@@ -124,7 +127,11 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
             values.put(FeedsTable.COLUMN_TITLE, title);
             values.put(FeedsTable.COLUMN_DESCRIPTION, description);
             values.put(FeedsTable.COLUMN_RANGE, range);
-            values.put(FeedsTable.COLUMN_STATUS, checked);
+            if (isChecked) {
+                values.put(FeedsTable.COLUMN_STATUS, 1);
+            } else {
+                values.put(FeedsTable.COLUMN_STATUS, -1);
+            }
 
             context.getContentResolver().update(ContentUris.withAppendedId(MainActivity.ENTRIES_URI, id), values,
                     FeedsTable._ID + "=?", new String[]{String.valueOf(id)});

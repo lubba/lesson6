@@ -15,9 +15,9 @@ class ReaderOpenHelper extends SQLiteOpenHelper {
                     + FeedsTable.COLUMN_TITLE + " TEXT, "
                     + FeedsTable.COLUMN_DESCRIPTION + " TEXT, "
                     + FeedsTable.COLUMN_RANGE + " INTEGER, "
-                    + FeedsTable.COLUMN_STATUS + " TEXT"
+                    + FeedsTable.COLUMN_STATUS + " INTEGER"
                     + ")";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
     private static final String DATABASE_NAME = "todo.db";
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + FeedsTable.TABLE_NAME;
 

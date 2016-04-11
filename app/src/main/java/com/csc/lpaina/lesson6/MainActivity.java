@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ContentValues values = new ContentValues();
         values.put(FeedsTable.COLUMN_TITLE, title);
         values.put(FeedsTable.COLUMN_DESCRIPTION, description);
-        values.put(FeedsTable.COLUMN_RANGE, 0);
+        values.put(FeedsTable.COLUMN_RANGE, -1);
         values.put(FeedsTable.COLUMN_STATUS, false);
 
         getContentResolver().insert(ENTRIES_URI, values);
