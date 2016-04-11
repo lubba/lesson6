@@ -88,7 +88,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
         final CheckBox checkBox;
         final CardView cardView;
 
-        Context context;
+        final Context context;
 
         int id;
         String title;

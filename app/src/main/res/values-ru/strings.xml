@@ -4,6 +4,6 @@
     <string name="add">Добавить</string>
     <string name="description">Описание</string>
     <string name="done">Сделано</string>
-    <string name="input_title">Введите новую задачу...</string>
+    <string name="input_title">Введите новую задачу…</string>
     <string name="title">Заголовок</string>
 </resources>

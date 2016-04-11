@@ -16,11 +16,11 @@ import hugo.weaving.DebugLog;
 
 @DebugLog
 public class ReaderContentProvider extends ContentProvider {
-    public static final String AUTHORITY = "com.csc.lpaina.lesson6";
+    private static final String AUTHORITY = "com.csc.lpaina.lesson6";
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY);
 
-    public static final int ENTRIES = 1;
-    public static final int ENTRIES_ID = 2;
+    private static final int ENTRIES = 1;
+    private static final int ENTRIES_ID = 2;
 
     private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 

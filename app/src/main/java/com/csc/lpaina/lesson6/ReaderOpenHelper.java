@@ -8,10 +8,7 @@ import android.util.Log;
 import hugo.weaving.DebugLog;
 
 @DebugLog
-public class ReaderOpenHelper extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 4;
-    public static final String DATABASE_NAME = "todo.db";
-
+class ReaderOpenHelper extends SQLiteOpenHelper {
     public static final String SQL_CREATE_ENTRIES_TABLE =
             "CREATE TABLE " + FeedsTable.TABLE_NAME
                     + "("
@@ -21,7 +18,8 @@ public class ReaderOpenHelper extends SQLiteOpenHelper {
                     + FeedsTable.COLUMN_RANGE + " INTEGER, "
                     + FeedsTable.COLUMN_STATUS + " TEXT"
                     + ")";
-
+    private static final int DATABASE_VERSION = 4;
+    private static final String DATABASE_NAME = "todo.db";
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + FeedsTable.TABLE_NAME;
 
     public ReaderOpenHelper(Context context) {
