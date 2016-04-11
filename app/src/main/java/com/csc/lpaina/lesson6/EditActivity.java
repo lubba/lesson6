@@ -27,6 +27,7 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         textViewTitle = (TextView) findViewById(R.id.edit_title);
         textViewDescription = (TextView) findViewById(R.id.edit_description);
         checkBox = (CheckBox) findViewById(R.id.check_box_edit);
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
 
         Intent intent = getIntent();
         columnId = intent.getIntExtra(RVAdapter.CardViewHolder.COLUMN_ID, 0);
@@ -34,7 +35,6 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         textViewTitle.setText(intent.getStringExtra(RVAdapter.CardViewHolder.TITLE));
         textViewDescription.setText(intent.getStringExtra(RVAdapter.CardViewHolder.DESCRIPTION));
         checkBox.setChecked(intent.getBooleanExtra(RVAdapter.CardViewHolder.CHECKED, true));
-        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         ratingBar.setRating(intent.getIntExtra(RVAdapter.CardViewHolder.RANGE, 0));
 
         Button editFinished = (Button) findViewById(R.id.button_ok);

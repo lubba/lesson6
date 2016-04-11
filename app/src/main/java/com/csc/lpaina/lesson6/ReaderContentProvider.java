@@ -38,14 +38,11 @@ public class ReaderContentProvider extends ContentProvider {
 
     @Override
     public int delete(@NonNull Uri uri, String selection, String[] selectionArgs) {
-        // Implement this to handle requests to delete one or more rows.
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
     @Override
     public String getType(@NonNull Uri uri) {
-        // TODO: Implement this to handle requests for the MIME type of the data
-        // at the given URI.
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
@@ -97,14 +94,10 @@ public class ReaderContentProvider extends ContentProvider {
     @Override
     public int update(@NonNull Uri uri, ContentValues values, String selection,
                       String[] selectionArgs) {
-        // TODO: Implement this to handle requests to update one or more rows.
-        //throw new UnsupportedOperationException("Not yet implemented");
-        // Log.d(LOG_TAG, "update, " + uri.toString());
         switch (uriMatcher.match(uri)) {
 
             case ENTRIES_ID:
                 String id = uri.getLastPathSegment();
-                //Log.d(LOG_TAG, "URI_CONTACTS_ID, " + id);
                 if (TextUtils.isEmpty(selection)) {
                     selection = FeedsTable._ID + " = " + id;
                 } else {

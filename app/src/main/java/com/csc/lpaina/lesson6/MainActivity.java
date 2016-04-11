@@ -18,9 +18,9 @@ import hugo.weaving.DebugLog;
 
 @DebugLog
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, LoaderManager.LoaderCallbacks<Cursor> {
-    public static final String TAG = "MainActivity";
     public static final Uri ENTRIES_URI = Uri.withAppendedPath(ReaderContentProvider.CONTENT_URI, "entries");
     private final int ENTRIES_LOADER = 1;
+
     final private RVAdapter adapter = new RVAdapter(null);
     private EditText editText;
     private LinearLayoutManager layoutManager;
@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button.requestFocus();
 
         Cursor cursor = getContentResolver().query(ENTRIES_URI, null, null, null, null);
-        cursor.moveToNext();
         adapter.updateCursor(cursor);
         recyclerView.setAdapter(adapter);
         layoutManager.onItemsChanged(recyclerView);
@@ -55,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         values.put(FeedsTable.COLUMN_STATUS, false);
 
         getContentResolver().insert(ENTRIES_URI, values);
-
     }
 
     @Override
@@ -102,4 +100,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 throw new IllegalArgumentException("Argument id = " + id);
         }
     }
+
 }

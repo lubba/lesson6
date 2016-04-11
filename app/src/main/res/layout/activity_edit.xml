@@ -10,24 +10,49 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.csc.lpaina.lesson6.EditActivity">
 
-    <Button
-        android:id="@+id/button_ok"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ok" />
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/edit_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/text"
-        android:textSize="@dimen/big_text" />
+        <CheckBox
+            android:id="@+id/check_box_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:checked="false"
+            android:hint="@string/done" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button_ok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ok" />
+
+            <EditText
+                android:id="@+id/edit_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/title"
+                android:textSize="@dimen/big_text" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
     <EditText
         android:id="@+id/edit_description"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
+        android:hint="@string/description"
         android:textSize="@dimen/middle_text" />
 
     <LinearLayout
@@ -37,12 +62,6 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <CheckBox
-            android:id="@+id/check_box_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:checked="false"
-            android:text="@string/done" />
 
         <RatingBar
             android:id="@+id/ratingBar"

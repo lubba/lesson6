@@ -82,13 +82,17 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
         public static final String DESCRIPTION = "description";
         public static final String RANGE = "range";
         public static final String CHECKED = "checked";
+
         final TextView textViewTitle;
         final TextView textViewDescription;
         final CheckBox checkBox;
         final CardView cardView;
+
         Context context;
+
         int id;
-        String title, description;
+        String title;
+        String description;
         boolean checked;
         int range;
 

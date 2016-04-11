@@ -5,5 +5,4 @@
     <dimen name="middle_text">20sp</dimen>
     <dimen name="big_text">25sp</dimen>
     <dimen name="small_text">15sp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
 </resources>
