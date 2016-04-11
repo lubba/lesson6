@@ -38,13 +38,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editText = (EditText) findViewById(R.id.edit_text);
         Button button = (Button) findViewById(R.id.button_add);
         button.setOnClickListener(this);
+        button.requestFocus();
 
         Cursor cursor = getContentResolver().query(ENTRIES_URI, null, null, null, null);
         cursor.moveToNext();
         adapter.updateCursor(cursor);
         recyclerView.setAdapter(adapter);
         layoutManager.onItemsChanged(recyclerView);
-        //recyclerView.swapAdapter();
     }
 
     public void addData(String title, String description) {
@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         addData(editText.getText().toString(), "");
+        editText.setText("");
+        editText.clearFocus();
     }
 
     @Override
