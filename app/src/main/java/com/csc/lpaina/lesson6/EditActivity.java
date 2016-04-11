@@ -53,4 +53,5 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
                 FeedsTable._ID + "=?", new String[]{String.valueOf(columnId)});
         finish();
     }
+
 }

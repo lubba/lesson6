@@ -9,4 +9,5 @@ interface FeedsTable extends BaseColumns {
     String COLUMN_DESCRIPTION = "description";
     String COLUMN_RANGE = "range";
     String COLUMN_STATUS = "status";
+
 }

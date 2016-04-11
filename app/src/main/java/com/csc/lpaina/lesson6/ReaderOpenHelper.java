@@ -34,4 +34,5 @@ class ReaderOpenHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_ENTRIES);
         onCreate(db);
     }
+
 }

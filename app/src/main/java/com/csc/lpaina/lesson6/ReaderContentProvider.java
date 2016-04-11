@@ -110,4 +110,5 @@ public class ReaderContentProvider extends ContentProvider {
         getContext().getContentResolver().notifyChange(uri, null);
         return cnt;
     }
+
 }
