@@ -10,7 +10,6 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.util.Log;
 
 import hugo.weaving.DebugLog;
 
@@ -32,7 +31,6 @@ public class ReaderContentProvider extends ContentProvider {
     private ReaderOpenHelper helper;
 
     public ReaderContentProvider() {
-        Log.d("prov", "ReaderContentProvider: " + ReaderOpenHelper.SQL_CREATE_ENTRIES_TABLE);
         helper = new ReaderOpenHelper(getContext());
     }
 

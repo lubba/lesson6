@@ -3,7 +3,6 @@ package com.csc.lpaina.lesson6;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import hugo.weaving.DebugLog;
 
@@ -27,7 +26,6 @@ class ReaderOpenHelper extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db) {
-        Log.d("Helper", "onCreate: " + SQL_CREATE_ENTRIES_TABLE);
         db.execSQL(SQL_CREATE_ENTRIES_TABLE);
 
     }
